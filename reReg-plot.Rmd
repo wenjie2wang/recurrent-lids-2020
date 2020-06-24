@@ -1,0 +1,32 @@
+---
+output: latex_fragment
+---
+
+```{R, echo = FALSE, message = FALSE}
+library(reda); library(reReg)
+data(readmission, package = "frailtypack")
+readmission0 <- subset(readmission, !(id %in% c(60, 109, 280)))
+obj <- with(readmission0, Recur(t.stop, id, event, death))
+```
+
+Another quick and easy way to glance at recurrent event data is by event plots.
+The \pkg{reReg} provides a convenient way to create event plots by allowing users to plot
+the `Recur` object with the generic function `plot()`.
+```{R, ep, echo = FALSE, fig.path = 'images/', fig.show = 'hide', fig.width = 14, fig.height = 12}
+plot(obj)
+```
+More specifically, the event plot can be stratified by discrete variables. 
+For example, an event plot stratified by whether the patients receive chemotherapy
+(`chemo = 1` if no and `chemo = 2` if yes) can be created by the `plotEvents()` function
+with the `Recur` object as a formula response and `chemo` as a covariate. 
+```{R, epChemo, echo = FALSE, fig.path = 'images/', fig.show = 'hide', fig.width = 14, fig.height = 12}
+fn <- Recur(t.stop, id, event, death) ~ chemo
+plotEvents(fn, data = readmission0)
+``` 		
+\begin{figure}[H]
+\caption{Event plots}
+\begin{center}
+\includegraphics[scale = .125]{images/ep-1}
+\includegraphics[scale = .125]{images/epChemo-1}
+\end{center}
+\end{figure}		

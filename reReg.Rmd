@@ -1,0 +1,4 @@
+---
+output: latex_fragment
+---
+Regression models	

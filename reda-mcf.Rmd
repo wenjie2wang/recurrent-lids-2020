@@ -1,0 +1,4 @@
+---
+output: latex_fragment
+---
+Nonparametric Mean Cumulative Function Estimates ... 

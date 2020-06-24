@@ -1,0 +1,50 @@
+In the packages \pkg{reda} and \pkg{reReg}, recurrent event data are
+represented using an object of type \texttt{Recur} created by the
+\texttt{Recur()} function. The \texttt{Recur} object is an \texttt{S4}
+class object that bundles together a set of recurrent times, failure
+time, and censoring status, allowing users an easy first glance of the
+recurrent event data. The \texttt{Recur} object is also used as the
+formula response for many key functions in \pkg{reda} and \pkg{reReg}.
+The following commands can be used to create a \texttt{Recur} object
+corresponding to the rehospitalization data:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(reda); }\KeywordTok{library}\NormalTok{(reReg)   }
+\KeywordTok{data}\NormalTok{(readmission, }\DataTypeTok{package =} \StringTok{"frailtypack"}\NormalTok{)}
+\KeywordTok{with}\NormalTok{(readmission, }\KeywordTok{Recur}\NormalTok{(t.stop, id, event, death))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error: Subjects having multiple terminal events:
+## 60, 109, 280.
+\end{verbatim}
+
+The \texttt{Recur()} internally calls \texttt{check\_Recur()} to check
+whether the specified data fits into the recurrent event data framework
+and detected a possible issue on the data structure. Without these
+subjects, the \texttt{Recur} object is presented by intervals
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{readmission0 <-}
+\StringTok{    }\KeywordTok{subset}\NormalTok{(readmission, !(id %in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{60}\NormalTok{, }\DecValTok{109}\NormalTok{, }\DecValTok{280}\NormalTok{)))}
+\KeywordTok{options}\NormalTok{(}\DataTypeTok{max.print =} \DecValTok{5}\NormalTok{)}
+\NormalTok{(obj <-}\StringTok{ }\KeywordTok{with}\NormalTok{(readmission0,}
+            \KeywordTok{Recur}\NormalTok{(t.stop, id, event, death)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1: (0, 24], (24, 457], (457, 1037+]       
+## [2] 2: (0, 489], (489, 1182+]                 
+## [3] 3: (0, 15], (15, 783*]                    
+## [4] 4: (0, 163], (163, 288], ..., (686, 2048+]
+## [5] 5: (0, 1134], (1134, 1144+]               
+##  [ reached getOption("max.print") -- omitted 395 entries ]
+\end{verbatim}
+
+For a concise printing, up to three recurrent intervals are printed.
+Users can modify this by specifying \texttt{reda.Recur.maxPrint} in
+\texttt{options()}.

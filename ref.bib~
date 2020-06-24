@@ -1,0 +1,200 @@
+@article{brown2007induced,
+  title =	 {Induced smoothing for rank regression with censored
+                  survival times},
+  author =	 {Brown, BM and Wang, You-Gan},
+  journal =	 {Statistics in medicine},
+  volume =	 26,
+  number =	 4,
+  pages =	 {828--836},
+  year =	 2007,
+  publisher =	 {Wiley Online Library}
+}
+
+@book{cook2007statistical,
+  title =	 {The statistical analysis of recurrent events},
+  author =	 {Cook, Richard J and Lawless, Jerald},
+  year =	 2007,
+  publisher =	 {Springer Science \& Business Media}
+}
+
+@book{fleming2011counting,
+  title =	 {Counting processes and survival analysis},
+  author =	 {Fleming, Thomas R and Harrington, David P},
+  volume =	 169,
+  year =	 2011,
+  publisher =	 {John Wiley \& Sons}
+}
+
+@Manual{fp,
+  title =	 {{frailtypack}: General Frailty Models: Shared, Joint
+                  and Nested Frailty Models with Prediction;
+                  Evaluation of Failure-Time Surrogate Endpoints},
+  author =	 {Virginie Rondeau and Juan R. Gonzalez and Yassin
+                  Mazroui and Audrey Mauguen and Amadou Diakite and
+                  Alexandre Laurent and Myriam Lopez and Agnieszka
+                  Kr\'{o}l and Casimir L. Sofeu},
+  year =	 2019,
+  note =	 {{R} package version 3.0.3},
+  url =		 {https://CRAN.R-project.org/package=frailtypack},
+}
+
+@article{ghosh2002marginal,
+  title =	 {Marginal regression models for recurrent and
+                  terminal events},
+  author =	 {Ghosh, Debashis and Lin, Danyu Y},
+  journal =	 {Statistica Sinica},
+  pages =	 {663--688},
+  year =	 2002,
+  publisher =	 {JSTOR}
+}
+
+@article{ghosh2003semiparametric,
+  title =	 {Semiparametric analysis of recurrent events data in
+                  the presence of dependent censoring},
+  author =	 {Ghosh, Debashis and Lin, DY},
+  journal =	 {Biometrics},
+  volume =	 59,
+  number =	 4,
+  pages =	 {877--885},
+  year =	 2003,
+  publisher =	 {Wiley Online Library}
+}
+
+@article{huang2004joint,
+  title =	 {Joint modeling and estimation for recurrent event
+                  processes and failure time data},
+  author =	 {Huang, Chiung-Yu and Wang, Mei-Cheng},
+  journal =	 {Journal of the American Statistical Association},
+  volume =	 99,
+  number =	 468,
+  pages =	 {1153--1165},
+  year =	 2004,
+  publisher =	 {Taylor \& Francis}
+}
+
+@book{kalbfleisch2011statistical,
+  title =	 {The statistical analysis of failure time data},
+  author =	 {Kalbfleisch, John D and Prentice, Ross L},
+  volume =	 360,
+  year =	 2011,
+  publisher =	 {John Wiley \& Sons}
+}
+
+@article{lin1998accelerated,
+  title =	 {Accelerated failure time models for counting
+                  processes},
+  author =	 {Lin, DY and Wei, LJ and Ying, Zhiliang},
+  journal =	 {Biometrika},
+  volume =	 85,
+  number =	 3,
+  pages =	 {605--618},
+  year =	 1998,
+  publisher =	 {Oxford University Press}
+}
+
+@article{lin2000semiparametric,
+  title =	 {Semiparametric regression for the mean and rate
+                  functions of recurrent events},
+  author =	 {Lin, Danyu Y and Wei, Lee-Jen and Yang, I and Ying,
+                  Zhiliang},
+  journal =	 {Journal of the Royal Statistical Society: Series B
+                  (Statistical Methodology)},
+  volume =	 62,
+  number =	 4,
+  pages =	 {711--730},
+  year =	 2000,
+  publisher =	 {Wiley Online Library}
+}
+
+@article{pepe1993some,
+  title =	 {Some graphical displays and marginal regression
+                  analyses for recurrent failure times and time
+                  dependent covariates},
+  author =	 {Pepe, Margaret Sullivan and Cai, Jianwen},
+  journal =	 {Journal of the American statistical Association},
+  volume =	 88,
+  number =	 423,
+  pages =	 {811--820},
+  year =	 1993,
+  publisher =	 {Taylor \& Francis}
+}
+
+@Manual{reReg-package,
+  title =	 {reReg: Recurrent Event Regression},
+  author =	 {Sy Han (Steven) Chiou and Chiung-Yu { Huang}},
+  year =	 2020,
+  note =	 {R package version 1.2.1},
+  url =		 {http://github.com/stc04003/reReg},
+}
+
+@articlew{wang2001analyzing,
+  title={Analyzing recurrent event data with informative censoring},
+  author={Wang, Mei-Cheng and Qin, Jing and Chiang, Chin-Tsang},
+  journal={Journal of the American Statistical Association},
+  volume={96},
+  number={455},
+  pages={1057--1065},
+  year={2001},
+  publisher={Taylor \& Francis}
+}
+
+@Manual{reda-package,
+  title =	 {{reda}: {R}ecurrent Event Data Analysis},
+  author =	 {Wenjie Wang and Haoda Fu and Jun Yan},
+  year =	 2019,
+  url =		 {https://github.com/wenjie2wang/reda},
+  note =	 {{R} package version 0.5.0.9002},
+}
+
+@article{self1982commentary,
+  title =	 {Commentary on Andersen and Gill's" Cox's Regression
+                  Model for Counting Processes: A Large Sample Study"},
+  author =	 {Self, Steven G and Prentice, Ross L and others},
+  journal =	 {The Annals of Statistics},
+  volume =	 10,
+  number =	 4,
+  pages =	 {1121--1124},
+  year =	 1982,
+  publisher =	 {Institute of Mathematical Statistics}
+}
+
+@Manual{survival-package,
+  title =	 {A Package for Survival Analysis in R},
+  author =	 {Terry M Therneau},
+  year =	 2020,
+  note =	 {R package version 3.1-12},
+  url =		 {https://CRAN.R-project.org/package=survival},
+}
+
+@article{tsiatis1990estimating,
+  title =	 {Estimating regression parameters using linear rank
+                  tests for censored data},
+  author =	 {Tsiatis, Anastasios A},
+  journal =	 {The Annals of Statistics},
+  pages =	 {354--372},
+  year =	 1990,
+  publisher =	 {JSTOR}
+}
+
+@article{xu2017joint,
+  title =	 {Joint scale-change models for recurrent events and
+                  failure time},
+  author =	 {Xu, Gongjun and Chiou, Sy Han and Huang, Chiung-Yu
+                  and Wang, Mei-Cheng and Yan, Jun},
+  journal =	 {Journal of the American Statistical Association},
+  volume =	 112,
+  number =	 518,
+  pages =	 {794--805},
+  year =	 2017,
+  publisher =	 {Taylor \& Francis}
+}
+
+@article{xu2019generalized,
+  title =	 {Generalized scale-change models for recurrent event
+                  processes under informative censoring},
+  author =	 {Xu, Gongjun and Chiou, Sy Han and Yan, Jun and Marr,
+                  Kieren and Huang, Chiung-Yu},
+  journal =	 {Statistica Sinica},
+  year =	 2019,
+  doi =		 {http://doi:10.5705/ss.202018.0224}
+}
