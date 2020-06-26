@@ -1,4 +1,14 @@
 ---
 output: latex_fragment
 ---
-Regression models	
+The `reReg()` function from the package \pkg{reReg} provides flexible approaches to fit
+semiparametric regression model to recurrent event data.
+At the default specification, a joint scale-change model for the recurrent event process and
+the failure time is fitted.
+Specifically, the joint model takes the form of
+\begin{equation}
+\lambda(t) = Z \lambda_0(te^{X^\top\alpha})e^{X^\top\beta};
+h(t) = Z h_0(te^{X^\top\alpha})e^{X^\top\beta},
+\end{equation}		      
+where $Z$ is a latent shared frailty variable to account for association between the two types of
+outcomes, and $(\alpha, \beta)$ is the regression coefficient. 
