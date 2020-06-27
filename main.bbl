@@ -1,4 +1,4 @@
-\begin{thebibliography}{4}
+\begin{thebibliography}{7}
 \newcommand{\enquote}[1]{``#1''}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
@@ -6,12 +6,22 @@
 Chiou, S. H.~S. and { Huang}, C.-Y. (2020), \textit{reReg: Recurrent Event
   Regression}, r package version 1.2.1.
 
+\bibitem[{Cook et~al.(1996)Cook, Lawless, and Nadeau}]{cook1996biometrics}
+Cook, R.~J., Lawless, J.~F., and Nadeau, C. (1996), \enquote{Robust Tests for
+  Treatment Comparisons Based on Recurrent Event Responses,}
+  \textit{Biometrics}, 52, 557--571.
+
 \bibitem[{Gonz{\'a}lez et~al.(2005)Gonz{\'a}lez, Fernandez, Moreno, Ribes,
   Peris, Navarro, Cambray, and Borr{\`a}s}]{gonzalez2005sex}
 Gonz{\'a}lez, J.~R., Fernandez, E., Moreno, V., Ribes, J., Peris, M., Navarro,
   M., Cambray, M., and Borr{\`a}s, J.~M. (2005), \enquote{Sex differences in
   hospital readmission among colorectal cancer patients,} \textit{Journal of
   Epidemiology \& Community Health}, 59, 506--511.
+
+\bibitem[{Nelson(2003)}]{nelson2003siam}
+Nelson, W.~B. (2003), \textit{Recurrent Events Data Analysis for Product
+  Repairs, Disease Recurrences, and Other Applications}, Society for Industrial
+  and Applied Mathematics.
 
 \bibitem[{Rondeau et~al.(2019)Rondeau, Gonzalez, Mazroui, Mauguen, Diakite,
   Laurent, Lopez, Kr\'{o}l, and Sofeu}]{fp}
@@ -21,8 +31,12 @@ Rondeau, V., Gonzalez, J.~R., Mazroui, Y., Mauguen, A., Diakite, A., Laurent,
   Prediction; Evaluation of Failure-Time Surrogate Endpoints}, {R} package
   version 3.0.3.
 
-\bibitem[{Wang et~al.(2019)Wang, Fu, and Yan}]{reda-package}
-Wang, W., Fu, H., and Yan, J. (2019), \textit{{reda}: {R}ecurrent Event Data
-  Analysis}, {R} package version 0.5.0.9002.
+\bibitem[{Wang et~al.(2020)Wang, Fu, and Yan}]{reda-package}
+Wang, W., Fu, H., and Yan, J. (2020), \textit{{reda}: {R}ecurrent Event Data
+  Analysis}, {R} package version 0.5.1.
+
+\bibitem[{Wickham(2016)}]{hadley2016ggplot2}
+Wickham, H. (2016), \textit{ggplot2: Elegant Graphics for Data Analysis},
+  Springer-Verlag New York.
 
 \end{thebibliography}
