@@ -139,6 +139,14 @@
 
 \usepackage{algorithm, algorithmic}
 
+% added to make font size smaller in code output
+\usepackage{etoolbox}
+\AtBeginEnvironment{verbatim}{\vspace{-10pt}\begin{small}}
+\AtEndEnvironment{verbatim}{\medskip\end{small}}
+\renewenvironment{Shaded}{\begin{small}\begin{snugshade}}
+{\end{snugshade}\end{small}}
+
+
 %% for knitr
 \usepackage[unicode=true,pdfusetitle,
  bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=2,
@@ -186,7 +194,10 @@ We will illustrate the rehospitalization data \citep{gonzalez2005sex} from the \
 package \citep{fp}.
 
 \input{reda-Recur}
+
 \input{reReg-plot}
+
+\input{reda-mcf}
 
 \input{reReg}
 

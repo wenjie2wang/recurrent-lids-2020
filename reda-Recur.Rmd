@@ -18,7 +18,7 @@ can be used to create a `Recur` object corresponding to the rehospitalization
 data:
 
 ```{R, error = TRUE, message = FALSE}
-library(reReg)
+library(reda); library(reReg)
 data(readmission, package = "frailtypack")
 with(readmission, Recur(t.stop, id, event, death))
 ```

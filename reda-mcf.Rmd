@@ -1,4 +1,53 @@
 ---
 output: latex_fragment
 ---
-Nonparametric Mean Cumulative Function Estimates ... 
+
+```{r setup, echo = FALSE}
+knitr::opts_chunk$set(comment = "")
+options(width = 60, digits = 2)
+library(reda)
+suppressPackageStartupMessages(library(ggplot2))
+data(readmission, package = "frailtypack")
+```
+
+Let $M_i(t)=\mathbb{E}\{N_i(t)\}$ denote the mean cumulative function (MCF) of
+$N_i(t)$.  The Nelson-Aalen estimator \citep{nelson2003siam} are widely utilized
+in exploring the trend of recurrent event data.
+<!-- $$\hat{M}(t) = \int_0^t \frac{dN(s)}{\delta(s)},$$ -->
+<!-- where $dN(s)=\sum_{i=1}^k dN_i(s)$, $\delta(s) = -->
+<!-- \sum_{i=1}^k \delta_i(s)$, $dN_i(s)$ and $\delta_i(s)$ is, respectively, the -->
+<!-- jump size and at-risk indicator of process $i$ at time $s$. -->
+<!--  -->
+We may use the `mcf()` function and the associated `plot()` method provided by
+the \pkg{reda} package to visualize MCF estimates stratified by whether the
+patients receive chemotherapy as follows. Terminal events are ignored here for
+ease of illustration.
+
+```{r plot-sampleMcf-code, eval = FALSE}
+re_mcf <- mcf(Recur(t.stop, id, event) ~ chemo,
+              data = readmission)
+plot(re_mcf, conf.int = TRUE, lty = 1:2) +
+    ggplot2::theme(legend.position = "bottom")
+```
+
+```{r plot-sampleMcf, echo = FALSE, fig.width = 3.5, fig.height = 3}
+re_mcf <- mcf(Recur(t.stop, id, event) ~ chemo,
+              data = readmission)
+plot(re_mcf, conf.int = TRUE, lty = 1:2) +
+    theme(legend.position = "bottom",
+          axis.title = element_text(size = 8),
+          legend.title = element_text(size = 8),
+          legend.text = element_text(size = 8),
+          legend.box.margin = margin(-12, -10, -10, -10))
+```
+
+The `plot()` method returns a `ggplot2` object \citep{hadley2016ggplot2} so that
+users may further customize the plot easily.
+
+
+Furthermore, we may compare the MCF estimates using pseudo-score tests
+\citep{cook1996biometrics} as follows:
+
+```{r mcfdiff, echo = TRUE}
+mcfDiff.test(re_mcf)
+```
