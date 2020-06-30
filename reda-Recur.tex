@@ -26,12 +26,12 @@ into the recurrent event data framework and detected a possible issue on
 the data structure. The \texttt{show()} method for \texttt{Recur}
 objects presents recurrent events in intervals, where events happened at
 end of the recurrent episodes with censoring due to (or not) terminal
-indicated by a trailing \texttt{+} (or \texttt{*}).
+indicated by a trailing \texttt{+} (or \texttt{*}). The following prints
+the \texttt{Recur} object for the first five subjects.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{readmission0 \textless{}{-}}\StringTok{ }\KeywordTok{subset}\NormalTok{(readmission, id }\OperatorTok{\%in\%}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{)}
-\KeywordTok{with}\NormalTok{(readmission0, }\KeywordTok{Recur}\NormalTok{(t.stop, id, event, death))}
+\KeywordTok{with}\NormalTok{(readmission[}\DecValTok{1}\NormalTok{:}\DecValTok{14}\NormalTok{,], }\KeywordTok{Recur}\NormalTok{(t.stop, id, event, death))}
 \end{Highlighting}
 \end{Shaded}
 

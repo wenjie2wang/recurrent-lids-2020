@@ -6,16 +6,24 @@ are widely utilized in exploring the trend of recurrent event data.
 \(dN(s)=\sum_{i=1}^k dN_i(s)\),
 \(\delta(s) = \sum_{i=1}^k \delta_i(s)\), \(dN_i(s)\) and
 \(\delta_i(s)\) is, respectively, the jump size and at-risk indicator of
-process \(i\) at time \(s\).
-
-We may use the \texttt{mcf()} function and the associated
-\texttt{plot()} method provided by the \pkg{reda} package to visualize
-MCF estimates stratified by whether the patients receive chemotherapy as
-follows. Terminal events are ignored here for ease of illustration.
+process \(i\) at time \(s\). The MCF can be visualized by plotting the
+\texttt{Recur} object with argument \texttt{MCF\ =\ TRUE} when the
+\pkg{reReg} package is active. The \pkg{reReg} package also offers the
+\texttt{plotMCF()} function for plotting MCF estimates to be stratified
+by discrete variables. Alternatively, the \texttt{mcf()} function from
+the \pkg{reda} package provides a more sophisticated approach to plot
+MCFs. Some of the unique features the \texttt{mcf()} has include the
+different variance estimations, confidence interval constructions, and
+predictions. The following example uses the \texttt{mcf()} function to
+visualize MCF estimates stratified by whether the patients receive
+chemotherapy. The \texttt{plot()} method, as well as the
+\texttt{plotEvents()} function, return a \texttt{ggplot2} object
+\citep{hadley2016ggplot2} so that users may further customize the plot
+easily.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{re_mcf <-}\StringTok{ }\KeywordTok{mcf}\NormalTok{(}\KeywordTok{Recur}\NormalTok{(t.stop, id, event) ~}\StringTok{ }\NormalTok{chemo, }\DataTypeTok{data =} \NormalTok{df0)}
+\NormalTok{re_mcf <-}\StringTok{ }\KeywordTok{mcf}\NormalTok{(fn, }\DataTypeTok{data =} \NormalTok{df0)}
 \KeywordTok{plot}\NormalTok{(re_mcf, }\DataTypeTok{conf.int =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{1}\NormalTok{:}\DecValTok{2}\NormalTok{) +}
 \StringTok{    }\NormalTok{ggplot2::}\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"bottom"}\NormalTok{)}
 \end{Highlighting}
@@ -25,8 +33,9 @@ follows. Terminal events are ignored here for ease of illustration.
 \includegraphics[scale = 1]{reda-mcf_files/figure-latex/plot-sampleMcf-1}
 \end{figure}
 
-Furthermore, we may compare the MCF estimates using pseudo-score tests
-\citep{cook1996biometrics} as follows:
+Furthermore, the MCF difference between two groups can be tested with
+the two-sample pseudo-score tests\\
+\citep{cook1996biometrics} via \texttt{mcfDiff.test()} as follows:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -45,3 +54,7 @@ Signif. codes:
 
 Variance Estimator: robust 
 \end{verbatim}
+
+Both the constant weighted and the linear weighted tests indicate the
+MCF estimates are statistically different at a significance level of
+0.05.

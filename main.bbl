@@ -2,10 +2,6 @@
 \newcommand{\enquote}[1]{``#1''}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
-\bibitem[{Chiou and { Huang}(2020)}]{reReg-package}
-Chiou, S. H.~S. and { Huang}, C.-Y. (2020), \textit{reReg: Recurrent Event
-  Regression}, r package version 1.2.1.
-
 \bibitem[{Cook et~al.(1996)Cook, Lawless, and Nadeau}]{cook1996biometrics}
 Cook, R.~J., Lawless, J.~F., and Nadeau, C. (1996), \enquote{Robust Tests for
   Treatment Comparisons Based on Recurrent Event Responses,}
@@ -17,6 +13,10 @@ Gonz{\'a}lez, J.~R., Fernandez, E., Moreno, V., Ribes, J., Peris, M., Navarro,
   M., Cambray, M., and Borr{\`a}s, J.~M. (2005), \enquote{Sex differences in
   hospital readmission among colorectal cancer patients,} \textit{Journal of
   Epidemiology \& Community Health}, 59, 506--511.
+
+\bibitem[{HanChiou and {Huang}(2020)}]{reReg-package}
+HanChiou, S. and {Huang}, C.-Y. (2020), \textit{\pkg{reReg}: {R}ecurrent Event
+  Regression}, {R} package version 1.2.1.
 
 \bibitem[{Nelson(2003)}]{nelson2003siam}
 Nelson, W.~B. (2003), \textit{Recurrent Events Data Analysis for Product
@@ -32,8 +32,8 @@ Rondeau, V., Gonzalez, J.~R., Mazroui, Y., Mauguen, A., Diakite, A., Laurent,
   version 3.0.3.
 
 \bibitem[{Wang et~al.(2020)Wang, Fu, and Yan}]{reda-package}
-Wang, W., Fu, H., and Yan, J. (2020), \textit{{reda}: {R}ecurrent Event Data
-  Analysis}, {R} package version 0.5.1.
+Wang, W., Fu, H., and Yan, J. (2020), \textit{\pkg{reda}: {R}ecurrent Event
+  Data Analysis}, {R} package version 0.5.1.
 
 \bibitem[{Wickham(2016)}]{hadley2016ggplot2}
 Wickham, H. (2016), \textit{ggplot2: Elegant Graphics for Data Analysis},

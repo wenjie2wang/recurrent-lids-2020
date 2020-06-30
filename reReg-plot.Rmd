@@ -7,12 +7,13 @@ library(reda); library(reReg)
 data(readmission, package = "frailtypack")
 ```
 
-Another quick and easy way to glance at recurrent event data is by event plots,
-which can be created by directly applying the generic function `plot()` to the `Recur` object
+Another easy way to glance at recurrent event data is by event plots,
+which can be created by applying the generic function `plot()` to the `Recur` object
 when the \pkg{reReg} package is loaded. 
 Additionally, the `plotEvents()` function from the \pkg{reReg} package allows users to 
 stratify the event plots by discrete variables.
-The following codes demonstrate these features.
+The following codes produces event plots with and without
+stratifying  by whether the patients receive chemotherapy.
     
 ```{R, ep, echo = FALSE, fig.path = 'images/', fig.show = 'hide', fig.width = 14, fig.height = 12}
 df0 <- subset(readmission, !(id %in% c(60, 109, 280)))
@@ -45,6 +46,3 @@ plotEvents(fn, data = df0, legend = "bottom") ## by chemo
 \caption{Event plots}\label{fig:1}
 \end{figure}
 
-The `plot()` method, as well as the `plotEvents()` function,
-return a `ggplot2` object \citep{hadley2016ggplot2} so that
-users may further customize the plot easily.
