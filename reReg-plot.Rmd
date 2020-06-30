@@ -5,28 +5,46 @@ output: latex_fragment
 ```{R, echo = FALSE, message = FALSE}
 library(reda); library(reReg)
 data(readmission, package = "frailtypack")
-readmission0 <- subset(readmission, !(id %in% c(60, 109, 280)))
-obj <- with(readmission0, Recur(t.stop, id, event, death))
 ```
 
-Another quick and easy way to glance at recurrent event data is by event plots.
-The \pkg{reReg} provides a convenient way to create event plots by allowing users to plot
-the `Recur` object with the generic function `plot()`.
+Another quick and easy way to glance at recurrent event data is by event plots,
+which can be created by directly applying the generic function `plot()` to the `Recur` object
+when the \pkg{reReg} package is loaded. 
+Additionally, the `plotEvents()` function from the \pkg{reReg} package allows users to 
+stratify the event plots by discrete variables.
+The following codes demonstrate these features.
+    
 ```{R, ep, echo = FALSE, fig.path = 'images/', fig.show = 'hide', fig.width = 14, fig.height = 12}
-plot(obj)
-```
-More specifically, the event plot can be stratified by discrete variables. 
-For example, an event plot stratified by whether the patients receive chemotherapy
-(`chemo = 1` if no and `chemo = 2` if yes) can be created by the `plotEvents()` function
-with the `Recur` object as a formula response and `chemo` as a covariate. 
-```{R, epChemo, echo = FALSE, fig.path = 'images/', fig.show = 'hide', fig.width = 14, fig.height = 12}
+df0 <- subset(readmission, !(id %in% c(60, 109, 280)))
+obj <- with(df0, Recur(t.stop, id, event, death))
+plot(obj, legend = "bottom")
 fn <- Recur(t.stop, id, event, death) ~ chemo
-plotEvents(fn, data = readmission0)
-``` 		
+plotEvents(fn, data = df0, legend = "bottom")
+```
+```{R, eval = FALSE}
+df0 <- subset(readmission, !(id %in% c(60, 109, 280)))
+obj <- with(df0, Recur(t.stop, id, event, death))
+plot(obj, legend = "bottom") ## no stratification
+fn <- Recur(t.stop, id, event, death) ~ chemo
+plotEvents(fn, data = df0, legend = "bottom") ## by chemo
+```
+\vspace*{-.3cm}
 \begin{figure}[H]
-\caption{Event plots}
-\begin{center}
+\centering
+\begin{subfigure}[t]{1.8in}
+\centering
 \includegraphics[scale = .125]{images/ep-1}
-\includegraphics[scale = .125]{images/epChemo-1}
-\end{center}
-\end{figure}		
+\caption{No stratification}\label{fig:1a}
+\end{subfigure}
+\quad
+\begin{subfigure}[t]{1.8in}
+\centering
+\includegraphics[scale = .125]{images/ep-2}
+\caption{Stratified by \texttt{chemo}}\label{fig:1b}
+\end{subfigure}
+\caption{Event plots}\label{fig:1}
+\end{figure}
+
+The `plot()` method, as well as the `plotEvents()` function,
+return a `ggplot2` object \citep{hadley2016ggplot2} so that
+users may further customize the plot easily.

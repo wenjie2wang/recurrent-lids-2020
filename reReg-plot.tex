@@ -1,19 +1,36 @@
 Another quick and easy way to glance at recurrent event data is by event
-plots. The \pkg{reReg} provides a convenient way to create event plots
-by allowing users to plot the \texttt{Recur} object with the generic
-function \texttt{plot()}.
+plots, which can be created by directly applying the generic function
+\texttt{plot()} to the \texttt{Recur} object when the \pkg{reReg}
+package is loaded. Additionally, the \texttt{plotEvents()} function from
+the \pkg{reReg} package allows users to stratify the event plots by
+discrete variables. The following codes demonstrate these features.
 
-More specifically, the event plot can be stratified by discrete
-variables. For example, an event plot stratified by whether the patients
-receive chemotherapy (\texttt{chemo\ =\ 1} if no and
-\texttt{chemo\ =\ 2} if yes) can be created by the \texttt{plotEvents()}
-function with the \texttt{Recur} object as a formula response and
-\texttt{chemo} as a covariate.
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df0 <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(readmission, !(id %in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{60}\NormalTok{, }\DecValTok{109}\NormalTok{, }\DecValTok{280}\NormalTok{)))}
+\NormalTok{obj <-}\StringTok{ }\KeywordTok{with}\NormalTok{(df0, }\KeywordTok{Recur}\NormalTok{(t.stop, id, event, death))}
+\KeywordTok{plot}\NormalTok{(obj, }\DataTypeTok{legend =} \StringTok{"bottom"}\NormalTok{) ## no stratification}
+\NormalTok{fn <-}\StringTok{ }\KeywordTok{Recur}\NormalTok{(t.stop, id, event, death) ~}\StringTok{ }\NormalTok{chemo}
+\KeywordTok{plotEvents}\NormalTok{(fn, }\DataTypeTok{data =} \NormalTok{df0, }\DataTypeTok{legend =} \StringTok{"bottom"}\NormalTok{) ## by chemo}
+\end{Highlighting}
+\end{Shaded}
 
-\begin{figure}[H]
-\caption{Event plots}
-\begin{center}
+\vspace*{-.3cm}\begin{figure}[H]
+\centering
+\begin{subfigure}[t]{1.8in}
+\centering
 \includegraphics[scale = .125]{images/ep-1}
-\includegraphics[scale = .125]{images/epChemo-1}
-\end{center}
+\caption{No stratification}\label{fig:1a}
+\end{subfigure}
+\quad
+\begin{subfigure}[t]{1.8in}
+\centering
+\includegraphics[scale = .125]{images/ep-2}
+\caption{Stratified by \texttt{chemo}}\label{fig:1b}
+\end{subfigure}
+\caption{Event plots}\label{fig:1}
 \end{figure}
+
+The \texttt{plot()} method, as well as the \texttt{plotEvents()}
+function, return a \texttt{ggplot2} object \citep{hadley2016ggplot2} so
+that users may further customize the plot easily.
