@@ -27,28 +27,67 @@ require the knowledge about the frailty as motivated by
 events and failure event is left unspecified and the proposed
 implementations accommodate informative censoring.
 
-Model \ref{general} allows great flexibility and includes several
-popular semiparametric models as special cases. For examples, the joint
-Cox model proposed by \citet{huang2004joint} is a special case when
-\(\alpha = \eta = 0\) and the joint Accelerated Mean model proposed by
-\citet{xu2017joint} is a special case when \(\alpha = \eta\). Moreover,
-when the primary interest is in the covariate effects on the risk of
-recurrent events and treating the terminal event as nuisances, i.e.,
+Model \ref{general} includes several popular semiparametric models as
+special cases, which can be specified via the \texttt{method} argument
+with the type of rate function and hazard separated by
+\texttt{\textbar{}}. For examples, the joint Cox model proposed by
+\citet{huang2004joint} is a special case of \ref{general} when
+\(\alpha = \eta = 0\) and can be called by
+\texttt{method\ =\ "cox\textbar{}cox"}; the joint Accelerated Mean model
+proposed by \citet{xu2017joint} is a special case when \(\alpha = \eta\)
+and can be called by \texttt{method\ =\ "am\textbar{}am"}. When the
+primary interest is in the covariate effects on the risk of recurrent
+events and treating the terminal event as nuisances, i.e.,
 \(\eta = \theta = 0\), model \ref{general} reduces to the generalized
-scale-change model proposed in \citet{xu2019generalized}. The different
-model types can be specified via the \texttt{method} argument with the
-type of rate function and hazard separated by \texttt{\textbar{}}. For
-example, setting \texttt{method\ =\ "cox\textbar{}cox"} gives the joint
-Cox model of \citet{huang2004joint} and
-\texttt{method\ =\ "sc\textbar{}."} gives the generalized scale-change
-model of \citet{xu2019generalized}. Other options includes \texttt{ar}
-for the accerlated rate models (\(\beta = \theta = 0\)) and \texttt{am}
-for the accerlated mean models. The following codes fit the joint Cox
-model and the generalized scale-change model respectively.
+scale-change model proposed in \citet{xu2019generalized}, called by
+\texttt{method\ =\ "sc\textbar{}."}. Users can mixed and match the
+\texttt{method} arguments depending on the application. For example,
+\texttt{method\ =\ "cox\textbar{}ar"} fits a Cox proportional model for
+the recurrent event rate function and an accelerated rate model for the
+terminal event hazard function, i.e., this assumes
+\(\alpha = \theta = 0\) in \ref{general}. For inference, the asymptotic
+variance is estimated from an efficient resampling-based sandwich
+estimator motivated by \citet{zeng2008efficient}. The resampling
+approach is faster than the conventional bootstrap method as it only
+requires evaluating perturbed estimating equations a large number of
+times rather than solving them. The following codes fit the joint Cox
+model with 200 (default) resampling replicates:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{fit1 <-}\StringTok{ }\KeywordTok{reReg}\NormalTok{(fn, }\DataTypeTok{data =} \NormalTok{df0, }\DataTypeTok{method =} \StringTok{"cox|cox"}\NormalTok{, }\DataTypeTok{se =} \StringTok{"r"}\NormalTok{)}
-\NormalTok{fit2 <-}\StringTok{ }\KeywordTok{reReg}\NormalTok{(fn, }\DataTypeTok{data =} \NormalTok{df0, }\DataTypeTok{method =} \StringTok{"sc|."}\NormalTok{, }\DataTypeTok{se =} \StringTok{"r"}\NormalTok{)}
+\KeywordTok{system.time}\NormalTok{(fit <-}\StringTok{ }\KeywordTok{reReg}\NormalTok{(fn, df0, }\DataTypeTok{method =} \StringTok{"cox|cox"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+   user  system elapsed 
+  1.884   0.016   1.903 
+\end{verbatim}
+
+The \texttt{summary()} method prints the results of the model fits:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(fit)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Call: 
+reReg(formula = fn, data = df0, method = "cox|cox")
+
+Recurrent event process:
+             Estimate StdErr z.value p.value
+chemoTreated   -0.189  0.244  -0.778   0.437
+
+Terminal event:
+             Estimate StdErr z.value p.value  
+chemoTreated    0.519  0.286   1.815    0.07 .
+\end{verbatim}
+
+After a model is fitted, the baseline rate function and hazard function
+can be visualized by plotting the \texttt{reReg()} object. Methods
+proposed by authors \citet{lin2000semiparametric},
+\citet{ghosh2002marginal}, and \citet{ghosh2003semiparametric} are also
+implemented in \pkg{reReg}. See \url{wenjie-stat.me/reda/} and
+\url{www.sychiou.com/reReg/} for the full package documents.

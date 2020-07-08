@@ -1,4 +1,4 @@
-\begin{thebibliography}{11}
+\begin{thebibliography}{15}
 \newcommand{\enquote}[1]{``#1''}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
@@ -11,6 +11,15 @@ Cook, R.~J., Lawless, J.~F., and Nadeau, C. (1996), \enquote{Robust Tests for
   Treatment Comparisons Based on Recurrent Event Responses,}
   \textit{Biometrics}, 52, 557--571.
 
+\bibitem[{Ghosh and Lin(2003)}]{ghosh2003semiparametric}
+Ghosh, D. and Lin, D. (2003), \enquote{Semiparametric analysis of recurrent
+  events data in the presence of dependent censoring,} \textit{Biometrics}, 59,
+  877--885.
+
+\bibitem[{Ghosh and Lin(2002)}]{ghosh2002marginal}
+Ghosh, D. and Lin, D.~Y. (2002), \enquote{Marginal regression models for
+  recurrent and terminal events,} \textit{Statistica Sinica}, 663--688.
+
 \bibitem[{Gonz{\'a}lez et~al.(2005)Gonz{\'a}lez, Fernandez, Moreno, Ribes,
   Peris, Navarro, Cambray, and Borr{\`a}s}]{gonzalez2005sex}
 Gonz{\'a}lez, J.~R., Fernandez, E., Moreno, V., Ribes, J., Peris, M., Navarro,
@@ -22,6 +31,12 @@ Gonz{\'a}lez, J.~R., Fernandez, E., Moreno, V., Ribes, J., Peris, M., Navarro,
 Huang, C.-Y. and Wang, M.-C. (2004), \enquote{Joint modeling and estimation for
   recurrent event processes and failure time data,} \textit{Journal of the
   American Statistical Association}, 99, 1153--1165.
+
+\bibitem[{Lin et~al.(2000)Lin, Wei, Yang, and Ying}]{lin2000semiparametric}
+Lin, D.~Y., Wei, L.-J., Yang, I., and Ying, Z. (2000), \enquote{Semiparametric
+  regression for the mean and rate functions of recurrent events,}
+  \textit{Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology)}, 62, 711--730.
 
 \bibitem[{Nelson(2003)}]{nelson2003siam}
 Nelson, W.~B. (2003), \textit{Recurrent Events Data Analysis for Product
@@ -57,5 +72,9 @@ Xu, G., Chiou, S.~H., Huang, C.-Y., Wang, M.-C., and Yan, J. (2017),
 Xu, G., Chiou, S.~H., Yan, J., Marr, K., and Huang, C.-Y. (2019),
   \enquote{Generalized scale-change models for recurrent event processes under
   informative censoring,} \textit{Statistica Sinica}.
+
+\bibitem[{Zeng and Lin(2008)}]{zeng2008efficient}
+Zeng, D. and Lin, D. (2008), \enquote{Efficient resampling methods for
+  nonsmooth estimating functions,} \textit{Biostatistics}, 9, 355--363.
 
 \end{thebibliography}

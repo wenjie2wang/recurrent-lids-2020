@@ -2,6 +2,7 @@
 output: latex_fragment
 ---
 ```{R, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(comment = "")
 library(reReg)
 options(width = 60)
 data(readmission, package = "frailtypack")
@@ -34,24 +35,38 @@ knowledge about the frailty as motivated by \citet{wang2001analyzing}.
 As a result, the dependence between recurrent events and failure event is left unspecified
 and the proposed implementations accommodate informative censoring.
 
-Model \ref{general} allows great flexibility and includes several popular semiparametric models
-as special cases.
-For examples, the joint Cox model proposed by \citet{huang2004joint} is a special case 
-when $\alpha = \eta = 0$ and the joint Accelerated Mean model proposed by \citet{xu2017joint}
-is a special case when $\alpha = \eta$.
-Moreover, when the primary interest is in the covariate effects on the risk of recurrent
+Model \ref{general} includes several popular semiparametric models as special cases,
+which can be specified via the `method` argument with the 
+type of rate function and hazard separated by `|`.
+For examples, the joint Cox model proposed by \citet{huang2004joint} is a special case of \ref{general}
+when $\alpha = \eta = 0$ and can be called by `method = "cox|cox"`;
+the joint Accelerated Mean model proposed by \citet{xu2017joint} is a special case when
+$\alpha = \eta$ and can be called by `method = "am|am"`.
+<!--Another option is `ar` for the accerlated rate model ($\beta = \theta = 0$).-->
+When the primary interest is in the covariate effects on the risk of recurrent
 events and treating the terminal event as nuisances, i.e., $\eta = \theta = 0$,
 model \ref{general} reduces to the generalized scale-change model proposed
-in \citet{xu2019generalized}.
-The different model types can be specified via the `method` argument with the
-type of rate function and hazard separated by `|`.
-For example, setting `method = "cox|cox"` gives the joint Cox model of \citet{huang2004joint}
-and `method = "sc|."` gives the generalized scale-change model of \citet{xu2019generalized}.
-Other options includes `ar` for the accerlated rate models ($\beta = \theta = 0$)
-and `am` for the accerlated mean models.
-The following codes fit the joint Cox model and the generalized scale-change model respectively. 
+in \citet{xu2019generalized}, called by `method = "sc|."`.
+Users can mixed and match the `method` arguments depending on the application.
+For example, `method = "cox|ar"` fits a Cox proportional model for the recurrent event rate function
+and an accelerated rate model for the terminal event hazard function,
+i.e., this assumes $\alpha = \theta = 0$ in \ref{general}. 
+For inference, the asymptotic variance is estimated from an efficient resampling-based sandwich
+estimator motivated by \citet{zeng2008efficient}.
+The resampling approach is faster than the conventional bootstrap method as it only requires
+evaluating perturbed estimating equations a large number of times rather than solving them.
+The following codes fit the joint Cox model with 200 (default) resampling replicates:
+<!--and the generalized scale-change model, respectively. -->
 ```{R, cache = TRUE}
-fit1 <- reReg(fn, data = df0, method = "cox|cox", se = "r")
-fit2 <- reReg(fn, data = df0, method = "sc|.", se = "r")
+system.time(fit <- reReg(fn, df0, method = "cox|cox"))
 ```
-
+The `summary()` method prints the results of the model fits:
+```{R}
+summary(fit)
+ ```
+After a model is fitted, the baseline rate function and hazard function can be visualized
+by plotting the `reReg()` object.
+Methods proposed by authors \citet{lin2000semiparametric}, \citet{ghosh2002marginal}, and
+\citet{ghosh2003semiparametric} are also implemented in \pkg{reReg}.
+See \url{wenjie-stat.me/reda/} and \url{www.sychiou.com/reReg/}
+for the full package documents.

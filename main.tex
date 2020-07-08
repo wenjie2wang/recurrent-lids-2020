@@ -3,7 +3,15 @@
 \usepackage{amsmath, amssymb}
 \usepackage[]{graphicx}
 \usepackage[]{color}
+\usepackage{tikz}
 
+\newcommand{\roundpic}[4][]{
+  \tikz\node [circle, minimum width = #2,
+    path picture = {
+      \node [#1] at (path picture bounding box.center) {
+        \includegraphics[width=#3]{#4}};
+    }] {};}
+    
 %% commands from jss.cls
 \newcommand\code{\bgroup\@makeother\_\@makeother\~\@makeother\$\@codex}
 \def\@codex#1{{\normalfont\ttfamily\hyphenchar\font=-1 #1}\egroup}
@@ -211,10 +219,10 @@ package \citep{fp}.
 \medskip
 
 \noindent
-\begin{minipage}[b]{1.2in}\centering
-  \sbox0{\includegraphics{WenjieWang}}%
-  \includegraphics[width=1.2in, trim={{0.08\wd0} {0.08\ht0} {0.08\wd0}
-    {0.08\ht0}}, clip=true]{WenjieWang}\\
+\begin{minipage}[b]{1.2in}
+\begin{flushleft}
+\roundpic[xshift=0cm, yshift=-.4cm]{2.8cm}{4cm}{WenjieWang}
+\end{flushleft}
 \end{minipage}
 \hspace{0.2cm}
 \begin{minipage}[b]{2.4in}
@@ -227,10 +235,11 @@ package \citep{fp}.
   Email: \email{wang\_wenjie@lilly.com}
 \end{flushright}
 \end{minipage}
-
-\begin{minipage}[b]{1.2in}\centering
-  \sbox0{\includegraphics{Chiou}}%
-  \includegraphics[width=1.0in]{Chiou}\\
+\newline\newline
+\begin{minipage}[b]{1.2in}
+\begin{flushleft}
+\roundpic[xshift=0cm, yshift=-.5cm]{2.8cm}{2.8cm}{Chiou}\\
+\end{flushleft}
 \end{minipage}
 \hspace{0.2cm}
 \begin{minipage}[b]{2.4in}
@@ -242,6 +251,8 @@ package \citep{fp}.
   Email: \email{schiou@utdallas.edu}
 \end{flushright}
 \end{minipage}
+
+
 
 
 \end{document}
