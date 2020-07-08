@@ -1,6 +1,10 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{11}
 \newcommand{\enquote}[1]{``#1''}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Chiou and {Huang}(2020)}]{reReg-package}
+Chiou, S.~H. and {Huang}, C.-Y. (2020), \textit{\pkg{reReg}: {R}ecurrent Event
+  Regression}, {R} package version 1.2.1.
 
 \bibitem[{Cook et~al.(1996)Cook, Lawless, and Nadeau}]{cook1996biometrics}
 Cook, R.~J., Lawless, J.~F., and Nadeau, C. (1996), \enquote{Robust Tests for
@@ -14,9 +18,10 @@ Gonz{\'a}lez, J.~R., Fernandez, E., Moreno, V., Ribes, J., Peris, M., Navarro,
   hospital readmission among colorectal cancer patients,} \textit{Journal of
   Epidemiology \& Community Health}, 59, 506--511.
 
-\bibitem[{HanChiou and {Huang}(2020)}]{reReg-package}
-HanChiou, S. and {Huang}, C.-Y. (2020), \textit{\pkg{reReg}: {R}ecurrent Event
-  Regression}, {R} package version 1.2.1.
+\bibitem[{Huang and Wang(2004)}]{huang2004joint}
+Huang, C.-Y. and Wang, M.-C. (2004), \enquote{Joint modeling and estimation for
+  recurrent event processes and failure time data,} \textit{Journal of the
+  American Statistical Association}, 99, 1153--1165.
 
 \bibitem[{Nelson(2003)}]{nelson2003siam}
 Nelson, W.~B. (2003), \textit{Recurrent Events Data Analysis for Product
@@ -31,6 +36,10 @@ Rondeau, V., Gonzalez, J.~R., Mazroui, Y., Mauguen, A., Diakite, A., Laurent,
   Prediction; Evaluation of Failure-Time Surrogate Endpoints}, {R} package
   version 3.0.3.
 
+\bibitem[{Wang et~al.(2001)Wang, Qin, and Chiang}]{wang2001analyzing}
+Wang, M.-C., Qin, J., and Chiang, C.-T. (2001), \enquote{Analyzing recurrent
+  event data with informative censoring,} .
+
 \bibitem[{Wang et~al.(2020)Wang, Fu, and Yan}]{reda-package}
 Wang, W., Fu, H., and Yan, J. (2020), \textit{\pkg{reda}: {R}ecurrent Event
   Data Analysis}, {R} package version 0.5.1.
@@ -38,5 +47,15 @@ Wang, W., Fu, H., and Yan, J. (2020), \textit{\pkg{reda}: {R}ecurrent Event
 \bibitem[{Wickham(2016)}]{hadley2016ggplot2}
 Wickham, H. (2016), \textit{ggplot2: Elegant Graphics for Data Analysis},
   Springer-Verlag New York.
+
+\bibitem[{Xu et~al.(2017)Xu, Chiou, Huang, Wang, and Yan}]{xu2017joint}
+Xu, G., Chiou, S.~H., Huang, C.-Y., Wang, M.-C., and Yan, J. (2017),
+  \enquote{Joint scale-change models for recurrent events and failure time,}
+  \textit{Journal of the American Statistical Association}, 112, 794--805.
+
+\bibitem[{Xu et~al.(2019)Xu, Chiou, Yan, Marr, and Huang}]{xu2019generalized}
+Xu, G., Chiou, S.~H., Yan, J., Marr, K., and Huang, C.-Y. (2019),
+  \enquote{Generalized scale-change models for recurrent event processes under
+  informative censoring,} \textit{Statistica Sinica}.
 
 \end{thebibliography}
