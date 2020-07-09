@@ -1,12 +1,11 @@
-In the packages \pkg{reda} and \pkg{reReg}, recurrent event data are
-represented using an object of type \texttt{Recur} created by the
-\texttt{Recur()} function. The \texttt{Recur} object is an \texttt{S4}
-class object that bundles together a set of recurrent times, failure
-time, and censoring status, allowing users an easy first glance of the
-recurrent event data. The \texttt{Recur} object is also used as the
-formula response for many key functions in \pkg{reda} and \pkg{reReg}.
-The following commands can be used to create a \texttt{Recur} object
-corresponding to the rehospitalization data:
+The \texttt{Recur()} function prepares the recurrent event data into a
+\texttt{Recur} object used in the packages \pkg{reda} and \pkg{reReg}.
+The \texttt{Recur} object is an \texttt{S4} class object that bundles
+together a set of recurrent times, failure time, and censoring status.
+The \texttt{Recur} object is also used as the formula response for many
+key functions in \pkg{reda} and \pkg{reReg}. The following commands
+create a \texttt{Recur} object corresponding to the rehospitalization
+data:
 
 \begin{Shaded}
 \begin{Highlighting}[]

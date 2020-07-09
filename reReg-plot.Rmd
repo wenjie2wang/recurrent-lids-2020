@@ -7,13 +7,13 @@ library(reda); library(reReg)
 data(readmission, package = "frailtypack")
 ```
 
-Another easy way to glance at recurrent event data is by event plots,
+An easy way to glance at recurrent event data is by event plots,
 which can be created by applying the generic function `plot()` to the `Recur` object
 when the \pkg{reReg} package is loaded. 
 Additionally, the `plotEvents()` function from the \pkg{reReg} package allows users to 
 stratify the event plots by discrete variables.
 The following codes produces event plots with and without
-stratifying  by whether the patients receive chemotherapy.
+stratifying  by whether the patients received chemotherapy.
     
 ```{R, ep, echo = FALSE, fig.path = 'images/', fig.show = 'hide', fig.width = 14, fig.height = 12}
 df0 <- subset(readmission, !(id %in% c(60, 109, 280)))
@@ -25,24 +25,22 @@ plotEvents(fn, data = df0, legend = "bottom")
 ```{R, eval = FALSE}
 df0 <- subset(readmission, !(id %in% c(60, 109, 280)))
 obj <- with(df0, Recur(t.stop, id, event, death))
-plot(obj, legend = "bottom") ## no stratification
+plot(obj, legend = "bottom") ## Fig. 1
 fn <- Recur(t.stop, id, event, death) ~ chemo
-plotEvents(fn, data = df0, legend = "bottom") ## by chemo
+plotEvents(fn, data = df0, legend = "bottom") ## Fig. 2
 ```
-\vspace*{-.3cm}
+\vspace*{-.3cm}	
 \begin{figure}[H]
-\centering
-\begin{subfigure}[t]{1.8in}
-\centering
-\includegraphics[scale = .125]{images/ep-1}
-\caption{No stratification}\label{fig:1a}
-\end{subfigure}
-\quad
-\begin{subfigure}[t]{1.8in}
-\centering
-\includegraphics[scale = .125]{images/ep-2}
-\caption{Stratified by \texttt{chemo}}\label{fig:1b}
-\end{subfigure}
-\caption{Event plots}\label{fig:1}
+    \centering
+    \begin{minipage}{0.245\textwidth}
+        \centering
+        \includegraphics[scale = .125]{images/ep-1}
+        \caption{No stratification}
+    \end{minipage}\hfill
+    \begin{minipage}{0.245\textwidth}
+        \centering
+        \includegraphics[scale = .125]{images/ep-2}
+        \caption{Stratified by `chemo`.}
+    \end{minipage}
 \end{figure}
-
+	

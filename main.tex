@@ -137,6 +137,7 @@
 \usepackage{anyfontsize}
 \usepackage{caption}
 \usepackage{subcaption}
+\renewcommand{\figurename}{Fig.}
 \usepackage{wrapfig}
 \usepackage{scrextend}
 \usepackage{booktabs}
@@ -174,33 +175,37 @@
 
 
 % \section*{Software Review}
-\section*{Recurrent Event Analysis with \pkg{reda} and \pkg{reReg}}
+\section*{Recurrent Event Analysis with \proglang{R} packages \pkg{reda} and \pkg{reReg}}
 
-Recurrent event data arise in situations where the event of interest,
+Recurrent event data arise when the event of interest,
 such as hospital admissions, infections, or tumor recurrences,
 can recur in the same individual during follow-up.
 The standard ``time-to-first'' event analysis cannot capture the cumulative experience of
 the recurrent events and could lead to invalid inferences.
 The \proglang{R} packages \pkg{reda} \citep{reda-package} and \pkg{reReg} \citep{reReg-package}
-provide a collection of visualization tools and statistical methods for exploring and analyzing 
+provide a collection of methods for exploring and analyzing 
 recurrent event data.
 
 
-Suppose in a study consists of a random sample of $n$ subjects and 
+Consider a random sample of $n$ subjects and let
 $N_i(t)$ be the number of events the $i$th subject experienced over the interval $[0, t]$. 
 Let $D$ be the failure time of interest that could either be a terminal event (e.g., death)
 or a non-terminal event (e.g., treatment failure).
-Let $C$ be the potential censoring time for reasons other than the failure event,
-the observed data are independent and identically distributed copies
+Let $C$ be the potential censoring time for reasons other than the failure event
+(e.g., study dropouts).
+The observed data are independent and identically distributed copies
 $\{N_i(t), Y_i, X_i; t\le Y_i, i = 1, \ldots, n\}$,
 where $Y_i = \min(D, C)$, $\Delta_i = I(D\le C)$,
-$X_i$ is a covariate vector, $I(\cdot)$ is the indicator function,
-and the recurrent event process $N_i(\cdot)$ is observed up to the composite censoring time $Y_i$.
-Suppose we are interested in making inference about the recurrent event process and the failure
-event in the time interval $[0, \tau]$, where the constant $\tau$ is determined with the knowledge
-that recurrent and failure events could potentially be observed up to time $\tau$.
-We will illustrate the rehospitalization data \citep{gonzalez2005sex} from the \pkg{frailtypack} 
-package \citep{fp}.
+$I(\cdot)$ is the indicator function,
+$X_i$ is a covariate vector, 
+and $N_i(\cdot)$ is observed up $Y_i$.
+% and the recurrent event process $N_i(\cdot)$ is observed up to the composite censoring time $Y_i$.
+% Suppose we are interested in making inference about the recurrent event process and the failure
+% event in the time interval $[0, \tau]$, for some constant $\tau$, e.g., end of study. 
+% where the recurrent and failure events could potentially be observed up to time $\tau$.
+We illustrate the key features of \pkg{reda} and \pkg{reReg} with the 
+rehospitalization data % \citep{gonzalez2005sex}
+from the \pkg{frailtypack} package \citep{fp}.
 
 \input{reda-Recur}
 

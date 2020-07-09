@@ -11,39 +11,36 @@ data(readmission, package = "frailtypack")
 df0 <- subset(readmission, !(id %in% c(60, 109, 280)))
 ```
 
-The mean cumulative function (MCF) is often the focus in a nonparametric analysis of recurrent data.
+The mean cumulative function (MCF) is often the focus in the nonparametric analysis of
+recurrent events.
 Let $M_i(t)=\mathbb{E}\{N_i(t)\}$ denote the MCF of
-$N_i(t)$.  The Nelson-Aalen estimator \citep{nelson2003siam} are widely utilized
-in exploring the trend of recurrent event data.
-$$\hat{M}(t) = \int_0^t \frac{dN(s)}{\delta(s)},$$
+$N_i(t)$.  The Nelson-Aalen estimator \citep{nelson2003siam}
+for the MCF takes the form
+<!--exploring the trend of recurrent events has the form:-->
+$$\widehat{M}(t) = \int_0^t \frac{dN(s)}{\delta(s)},$$
 where $dN(s)=\sum_{i=1}^k dN_i(s)$, $\delta(s) = 
 \sum_{i=1}^k \delta_i(s)$, $dN_i(s)$ and $\delta_i(s)$ is, respectively, the
 jump size and at-risk indicator of process $i$ at time $s$.
 The MCF can be visualized by plotting the `Recur` object with argument
-`MCF = TRUE` when the \pkg{reReg} package is active.
-The \pkg{reReg} package also offers the `plotMCF()` function for plotting MCF estimates
-to be stratified by discrete variables. 
+`mcf = TRUE` when the \pkg{reReg} package is active, e.g., `plot(obj, mcf = TRUE)`.
+<!--The \pkg{reReg} package also offers the `plotMCF()` function for plotting MCFs
+stratified by discrete variables. -->
 Alternatively, the `mcf()` function from the \pkg{reda} package provides a more
-sophisticated approach to plot MCFs.
-Some of the unique features the `mcf()` has include the different
-variance estimations, confidence interval constructions, and predictions.
+sophisticated approach to plot MCFs and make inference.
 The following example uses the `mcf()` function to visualize MCF estimates
-stratified by whether the patients receive chemotherapy.
+stratified by whether the patients received chemotherapy.
 <!-- We may use the `mcf()` function and the associated `plot()` method provided by
 the \pkg{reda} package to visualize MCF estimates stratified by whether the
-patients receive chemotherapy as follows.
+patients received chemotherapy as follows.
 Terminal events are ignored here for ease of illustration. -->
-The `plot()` method, as well as the `plotEvents()` function,
-return a `ggplot2` object \citep{hadley2016ggplot2} so that
-users may further customize the plot easily.
 
 ```{r plot-sampleMcf-code, eval = FALSE}
 re_mcf <- mcf(fn, data = df0)
 plot(re_mcf, conf.int = TRUE, lty = 1:2) +
-    ggplot2::theme(legend.position = "bottom")
+    ggplot2::theme(legend.position = "bottom") ## Fig. 3
 ```
 
-```{r plot-sampleMcf, echo = FALSE, fig.width = 3.5, fig.height = 3, fig.show = 'hide'}
+```{r plot-sampleMcf, echo = FALSE, fig.path = 'images/', fig.show = 'hide', fig.width = 14, fig.height = 12}
 re_mcf <- mcf(Recur(t.stop, id, event) ~ chemo, data = df0)
 plot(re_mcf, conf.int = TRUE, lty = 1:2) +
     theme(legend.position = "bottom",
@@ -52,15 +49,32 @@ plot(re_mcf, conf.int = TRUE, lty = 1:2) +
           legend.text = element_text(size = 8),
           legend.box.margin = margin(-12, -10, -10, -10))
 ```
+\vspace*{-.3cm}
 \begin{figure}[H]
-\includegraphics[scale = 1]{reda-mcf_files/figure-latex/plot-sampleMcf-1}
+    \centering
+    \begin{minipage}{0.245\textwidth}
+        \centering
+        \includegraphics[scale = .125]{images/plot-sampleMcf-1}
+        \caption{Stratified by `chemo`}
+    \end{minipage}\hfill
+    \begin{minipage}{0.245\textwidth}
+        \centering
+        \includegraphics[scale = .125]{images/mcfdiffplot-1}
+        \caption{MCF difference}
+    \end{minipage}
 \end{figure}
-	
-Furthermore, the MCF difference between two groups can be tested 
-with the two-sample pseudo-score tests  
-\citep{cook1996biometrics} via `mcfDiff.test()` as follows:
+<!--The `plot()` method return a `ggplot2` object \citep{hadley2016ggplot2} so that
+users may further customize the plot easily.-->
+The MCF difference between two groups can be tested
+via `mcfDiff.test()`, which implements the the two-sample pseudo-score tests of
+\citep{cook1996biometrics}.
+The following results indicate the MCF estimates are statistically different at
+a significance level of 0.05.
+The MCF difference can be plotted with directly by `plot(mcfDiff(re_mcf))`,
+as shown in Fig. 4.
 ```{r mcfdiff, echo = TRUE}
 mcfDiff.test(re_mcf)
 ```
-Both the constant weighted and the linear weighted tests indicate
-the MCF estimates are statistically different at a significance level of 0.05.	
+```{r mcfdiffplot, echo = FALSE, fig.path = 'images/', fig.show = 'hide', fig.width = 14, fig.height = 12}
+plot(mcfDiff(re_mcf))
+```

@@ -3,19 +3,17 @@ output: latex_fragment
 ---
 
 ```{R setup, echo = FALSE, results = "asis"}
-knitr::opts_chunk$set(## fig.path = "figure/", prompt = TRUE,
-                      comment = "")
+knitr::opts_chunk$set(comment = "")
 options(width = 50)
 ```
 
-In the packages \pkg{reda} and \pkg{reReg}, recurrent event data are represented
-using an object of type `Recur` created by the `Recur()` function.  The `Recur`
-object is an `S4` class object that bundles together a set of recurrent times,
-failure time, and censoring status, allowing users an easy first glance of the
-recurrent event data.  The `Recur` object is also used as the formula response
+The `Recur()` function prepares the recurrent event data into a `Recur` object
+used in the packages \pkg{reda} and \pkg{reReg}.
+The `Recur` object is an `S4` class object that bundles together a set of recurrent times,
+failure time, and censoring status.
+The `Recur` object is also used as the formula response
 for many key functions in \pkg{reda} and \pkg{reReg}.  The following commands
-can be used to create a `Recur` object corresponding to the rehospitalization
-data:
+create a `Recur` object corresponding to the rehospitalization data:
 
 ```{R, error = TRUE, message = FALSE}
 library(reda); library(reReg)

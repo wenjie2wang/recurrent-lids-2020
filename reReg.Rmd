@@ -11,51 +11,50 @@ obj <- with(df0, Recur(t.stop, id, event, death))
 fn <- Recur(t.stop, id, event, death) ~ chemo
 ```
 	
-When the study interest is placed on evaluating the covariate effect on the recurrent event process
-and/or the terminal event, the `reReg()` function from the \pkg{reReg} package provides
-approaches to fit semiparametric regression model to recurrent event data.
-The `reReg()` function offers users options to choose from some of the most common models.
-In general, a joint scale-change model for the rate function of the recurrent event process and
-the hazard function of the failure time is formulated as follow: 
+When the study interest is to evaluate the covariate effect on the recurrent event process
+and/or the terminal event, the `reReg()` function from the \pkg{reReg} package
+fits semiparametric regression models to recurrent event data.
+A general joint model for the rate of the recurrent event process and
+the hazard of the failure time can be formulated as follow: 
 \begin{equation}
 \lambda(t) = Z \lambda_0(te^{X^\top\alpha})e^{X^\top\beta};
 h(t) = Z h_0(te^{X^\top\eta})e^{X^\top\theta},
 \label{general}
-\end{equation}		      
+\end{equation}
 where $Z$ is a latent shared frailty variable to account for association between the two types of
 outcomes, $\lambda_0(\cdot)$ is the baseline rate function,
 $h_0(\cdot)$ is the baseline hazard function, and the regression coefficients
-$(\alpha, \eta)$ and $(\beta, \theta)$ correspond to the shape and size parameters  
+$(\alpha, \eta)$ and $(\beta, \theta)$ correspond to the shape and size parameters 
 of the rate function and hazard function, respectively.
-In contrast to usual shared-frailty models that require a parametric assumption on the distribution
-of the frailty random variable,
+In contrast to many shared-frailty models that require a parametric assumption,
 <!--so that the likelihood method can be used to estimate the joint model,-->
-the `reReg()` function provides semiparametric estimation procedures that do not require the
-knowledge about the frailty as motivated by \citet{wang2001analyzing}.
+following the idea of \citet{wang2001analyzing},
+the `reReg()` function implements semiparametric estimation procedures that do not require the
+knowledge about the frailty distribution.
 As a result, the dependence between recurrent events and failure event is left unspecified
 and the proposed implementations accommodate informative censoring.
 
-Model \ref{general} includes several popular semiparametric models as special cases,
+Model \eqref{general} includes several popular semiparametric models as special cases,
 which can be specified via the `method` argument with the 
-type of rate function and hazard separated by `|`.
-For examples, the joint Cox model proposed by \citet{huang2004joint} is a special case of \ref{general}
-when $\alpha = \eta = 0$ and can be called by `method = "cox|cox"`;
+rate function and hazard function separated by "`|`".
+For examples, the joint Cox model proposed by \citet{huang2004joint} is a special case of
+\eqref{general} when $\alpha = \eta = 0$ and can be called by `method = "cox|cox"`;
 the joint Accelerated Mean model proposed by \citet{xu2017joint} is a special case when
-$\alpha = \eta$ and can be called by `method = "am|am"`.
+$\alpha = \beta$ and $\eta = \theta$ and can be called by `method = "am|am"`.
 <!--Another option is `ar` for the accerlated rate model ($\beta = \theta = 0$).-->
 When the primary interest is in the covariate effects on the risk of recurrent
 events and treating the terminal event as nuisances, i.e., $\eta = \theta = 0$,
-model \ref{general} reduces to the generalized scale-change model proposed
+model \eqref{general} reduces to the generalized scale-change model proposed
 in \citet{xu2019generalized}, called by `method = "sc|."`.
 Users can mixed and match the `method` arguments depending on the application.
-For example, `method = "cox|ar"` fits a Cox proportional model for the recurrent event rate function
-and an accelerated rate model for the terminal event hazard function,
-i.e., this assumes $\alpha = \theta = 0$ in \ref{general}. 
+For example, `method = "cox|ar"` postulate a Cox proportional model for the recurrent event rate
+function and an accelerated rate model for the terminal event hazard function,
+i.e., this assumes $\alpha = \theta = 0$ in \eqref{general}. 
 For inference, the asymptotic variance is estimated from an efficient resampling-based sandwich
 estimator motivated by \citet{zeng2008efficient}.
 The resampling approach is faster than the conventional bootstrap method as it only requires
-evaluating perturbed estimating equations a large number of times rather than solving them.
-The following codes fit the joint Cox model with 200 (default) resampling replicates:
+evaluating perturbed estimating equations rather than solving them.
+The following code fit the joint Cox model with 200 (default) resampling replicates:
 <!--and the generalized scale-change model, respectively. -->
 ```{R, cache = TRUE}
 system.time(fit <- reReg(fn, df0, method = "cox|cox"))
