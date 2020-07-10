@@ -18,13 +18,13 @@ stratifying  by whether the patients received chemotherapy.
 ```{R, ep, echo = FALSE, fig.path = 'images/', fig.show = 'hide', fig.width = 7, fig.height = 6.5}
 df0 <- subset(readmission, !(id %in% c(60, 109, 280)))
 obj <- with(df0, Recur(t.stop, id, event, death))
-plot(obj, legend = "top", main = "", cex = 3.25) +
+plot(obj, legend = "top", main = "", cex = 3) +
     theme(axis.text = element_text(size = 24),
           axis.title = element_text(size = 26),
           legend.text = element_text(size = 26)) +
     guides(shape = guide_legend(override.aes = list(size = 7)))
 fn <- Recur(t.stop, id, event, death) ~ chemo
-plotEvents(fn, data = df0, legend = "top", main = "", cex = 3.25) +
+plotEvents(fn, data = df0, legend = "top", main = "", cex = 3) +
     theme(axis.text = element_text(size = 24),
           axis.title = element_text(size = 26),
           strip.text = element_text(size = 24),
