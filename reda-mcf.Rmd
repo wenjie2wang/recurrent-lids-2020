@@ -37,7 +37,7 @@ Terminal events are ignored here for ease of illustration. -->
 ```{r plot-sampleMcf-code, eval = FALSE}
 re_mcf <- mcf(fn, data = df0)
 plot(re_mcf, conf.int = TRUE, lty = 1:2) +
-    ggplot2::theme(legend.position = "bottom") ## Fig. 3
+    ggplot2::theme(legend.position = "bottom") # Fig. 3
 ```
 
 ```{r plot-sampleMcf, echo = FALSE, fig.path = 'images/', fig.show = 'hide', fig.width = 14, fig.height = 12}
