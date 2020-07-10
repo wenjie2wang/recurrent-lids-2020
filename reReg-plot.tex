@@ -10,9 +10,9 @@ whether the patients received chemotherapy.
 \begin{Highlighting}[]
 \NormalTok{df0 <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(readmission, !(id %in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{60}\NormalTok{, }\DecValTok{109}\NormalTok{, }\DecValTok{280}\NormalTok{)))}
 \NormalTok{obj <-}\StringTok{ }\KeywordTok{with}\NormalTok{(df0, }\KeywordTok{Recur}\NormalTok{(t.stop, id, event, death))}
-\KeywordTok{plot}\NormalTok{(obj, }\DataTypeTok{legend =} \StringTok{"bottom"}\NormalTok{) ## Fig. 1}
+\KeywordTok{plot}\NormalTok{(obj, }\DataTypeTok{legend =} \StringTok{"top"}\NormalTok{) ## Fig. 1}
 \NormalTok{fn <-}\StringTok{ }\KeywordTok{Recur}\NormalTok{(t.stop, id, event, death) ~}\StringTok{ }\NormalTok{chemo}
-\KeywordTok{plotEvents}\NormalTok{(fn, }\DataTypeTok{data =} \NormalTok{df0, }\DataTypeTok{legend =} \StringTok{"bottom"}\NormalTok{) ## Fig. 2}
+\KeywordTok{plotEvents}\NormalTok{(fn, }\DataTypeTok{data =} \NormalTok{df0, }\DataTypeTok{legend =} \StringTok{"top"}\NormalTok{) ## Fig. 2}
 \end{Highlighting}
 \end{Shaded}
 
