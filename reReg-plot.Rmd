@@ -14,8 +14,8 @@ Additionally, the `plotEvents()` function from the \pkg{reReg} package allows us
 stratify the event plots by discrete variables.
 The following codes produces event plots with and without
 stratifying  by whether the patients received chemotherapy.
-    
-```{R, ep, echo = FALSE, fig.path = 'images/', fig.show = 'hide', fig.width = 14, fig.height = 12}
+
+```{R, ep, echo = FALSE, fig.path = 'images/', fig.show = 'hide', fig.width = 7, fig.height = 6.5}
 df0 <- subset(readmission, !(id %in% c(60, 109, 280)))
 obj <- with(df0, Recur(t.stop, id, event, death))
 plot(obj, legend = "top", main = "", cex = 3.25) +
@@ -43,13 +43,12 @@ plotEvents(fn, data = df0, legend = "top") # Fig. 2
     \centering
     \begin{minipage}{0.245\textwidth}
         \centering
-        \includegraphics[scale = .125]{images/ep-1}
+        \includegraphics[scale = .25]{images/ep-1}
         \caption{No stratification}
     \end{minipage}\hfill
     \begin{minipage}{0.245\textwidth}
         \centering
-        \includegraphics[scale = .125]{images/ep-2}
+        \includegraphics[scale = .25]{images/ep-2}
         \caption{Stratified by \texttt{chemo}.}
     \end{minipage}
 \end{figure}
-	

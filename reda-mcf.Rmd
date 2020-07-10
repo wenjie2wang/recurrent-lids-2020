@@ -40,7 +40,7 @@ plot(re_mcf, conf.int = TRUE, lty = 1:2) +
     ggplot2::theme(legend.position = "bottom") # Fig. 3
 ```
 
-```{r plot-sampleMcf, echo = FALSE, fig.path = 'images/', fig.show = 'hide', fig.width = 14, fig.height = 12}
+```{r plot-sampleMcf, echo = FALSE, fig.path = 'images/', fig.show = 'hide', fig.width = 3, fig.height = 2.55}
 re_mcf <- mcf(Recur(t.stop, id, event) ~ chemo, data = df0)
 plot(re_mcf, conf.int = TRUE, lty = 1:2) +
     theme(legend.position = "bottom",
@@ -54,12 +54,12 @@ plot(re_mcf, conf.int = TRUE, lty = 1:2) +
     \centering
     \begin{minipage}{0.245\textwidth}
         \centering
-        \includegraphics[scale = .125]{images/plot-sampleMcf-1}
+        \includegraphics[scale = .60]{images/plot-sampleMcf-1}
         \caption{Stratified by \texttt{chemo}}
     \end{minipage}\hfill
     \begin{minipage}{0.245\textwidth}
         \centering
-        \includegraphics[scale = .125]{images/mcfdiffplot-1}
+        \includegraphics[scale = .45]{images/mcfdiffplot-1}
         \caption{MCF difference}
     \end{minipage}
 \end{figure}
@@ -75,6 +75,6 @@ as shown in Fig. 4.
 ```{r mcfdiff, echo = TRUE}
 mcfDiff.test(re_mcf)
 ```
-```{r mcfdiffplot, echo = FALSE, fig.path = 'images/', fig.show = 'hide', fig.width = 14, fig.height = 12}
+```{r mcfdiffplot, echo = FALSE, fig.path = 'images/', fig.show = 'hide', fig.width = 4, fig.height = 3.45}
 plot(mcfDiff(re_mcf))
 ```
