@@ -16,36 +16,37 @@ estimates stratified by whether the patients received chemotherapy.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{re_mcf <-}\StringTok{ }\KeywordTok{mcf}\NormalTok{(fn, }\DataTypeTok{data =} \NormalTok{df0)}
-\KeywordTok{plot}\NormalTok{(re_mcf, }\DataTypeTok{conf.int =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{1}\NormalTok{:}\DecValTok{2}\NormalTok{) +}
-\StringTok{    }\NormalTok{ggplot2::}\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"bottom"}\NormalTok{) ## Fig. 3}
+\NormalTok{re\_mcf \textless{}{-}}\StringTok{ }\KeywordTok{mcf}\NormalTok{(fn, }\DataTypeTok{data =}\NormalTok{ df0)}
+\KeywordTok{plot}\NormalTok{(re\_mcf, }\DataTypeTok{conf.int =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{) }\OperatorTok{+}
+\StringTok{    }\NormalTok{ggplot2}\OperatorTok{::}\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"bottom"}\NormalTok{) }\CommentTok{\# Fig. 3}
 \end{Highlighting}
 \end{Shaded}
 
-\vspace*{-.3cm}\begin{figure}[H]
+\vspace*{-.3cm}
+\begin{figure}[H]
     \centering
     \begin{minipage}{0.245\textwidth}
         \centering
-        \includegraphics[scale = .125]{images/plot-sampleMcf-1}
+        \includegraphics[scale = .60]{images/plot-sampleMcf-1}
         \caption{Stratified by \texttt{chemo}}
     \end{minipage}\hfill
     \begin{minipage}{0.245\textwidth}
         \centering
-        \includegraphics[scale = .125]{images/mcfdiffplot-1}
+        \includegraphics[scale = .45]{images/mcfdiffplot-1}
         \caption{MCF difference}
     \end{minipage}
 \end{figure}
 
 The MCF difference between two groups can be tested via
-\texttt{mcfDiff.test()}, which implements the the two-sample
-pseudo-score tests of \citep{cook1996biometrics}. The following results
-indicate the MCF estimates are statistically different at a significance
-level of 0.05. The MCF difference can be plotted with directly by
+\texttt{mcfDiff.test()}, which implements the two-sample pseudo-score
+tests of \citep{cook1996biometrics}. The following results indicate the
+MCF estimates are statistically different at a significance level of
+0.05. The MCF difference can be plotted with directly by
 \texttt{plot(mcfDiff(re\_mcf))}, as shown in Fig. 4.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{mcfDiff.test}\NormalTok{(re_mcf)}
+\KeywordTok{mcfDiff.test}\NormalTok{(re\_mcf)}
 \end{Highlighting}
 \end{Shaded}
 
