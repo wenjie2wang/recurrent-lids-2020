@@ -49,7 +49,7 @@ plotEvents(fn, data = df0, legend = "top") ## Fig. 2
     \begin{minipage}{0.245\textwidth}
         \centering
         \includegraphics[scale = .125]{images/ep-2}
-        \caption{Stratified by `chemo`.}
+        \caption{Stratified by \texttt{chemo}.}
     \end{minipage}
 \end{figure}
 	

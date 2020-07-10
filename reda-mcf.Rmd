@@ -55,7 +55,7 @@ plot(re_mcf, conf.int = TRUE, lty = 1:2) +
     \begin{minipage}{0.245\textwidth}
         \centering
         \includegraphics[scale = .125]{images/plot-sampleMcf-1}
-        \caption{Stratified by `chemo`}
+        \caption{Stratified by \texttt{chemo}}
     \end{minipage}\hfill
     \begin{minipage}{0.245\textwidth}
         \centering
