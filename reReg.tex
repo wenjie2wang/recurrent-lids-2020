@@ -2,28 +2,22 @@ The \texttt{reReg()} function from the \pkg{reReg} package provides
 methods to fit semiparametric regression models to recurrent event data.
 A general joint model for the rate function of the recurrent event
 process and the hazard function of the failure time can be formulated as
-follow: \vspace*{-.5cm}
-
-\begin{equation}
+follow: \begin{equation}
 \lambda(t) = Z \lambda_0(te^{X^\top\alpha})e^{X^\top\beta};
-h(t) = Z h_0(te^{X^\top\eta})e^{X^\top\theta},
-\label{general}
-\end{equation}
-
-\vspace*{-.1cm}
-
-where \(Z\) is a latent shared frailty variable to account for
-association between the two types of outcomes, \(\lambda_0(\cdot)\) is
-the baseline rate function, \(h_0(\cdot)\) is the baseline hazard
-function, and the regression coefficients \((\alpha, \eta)\) and
-\((\beta, \theta)\) correspond to the shape and size parameters of the
-rate function and hazard function, respectively. In contrast to many
-shared-frailty models that require a parametric assumption, following
-the idea of \citet{wang2001analyzing}, the \texttt{reReg()} function
-implements semiparametric estimation procedures that do not require the
-knowledge about the frailty distribution. As a result, the dependence
-between recurrent events and failure event is left unspecified and the
-proposed implementations accommodate informative censoring.
+h(t) = Z h_0(te^{X^\top\eta})e^{X^\top\theta},\label{general}
+\end{equation} where \(Z\) is a latent shared frailty variable to
+account for association between the two types of outcomes,
+\(\lambda_0(\cdot)\) is the baseline rate function, \(h_0(\cdot)\) is
+the baseline hazard function, and the regression coefficients
+\((\alpha, \eta)\) and \((\beta, \theta)\) correspond to the shape and
+size parameters of the rate function and hazard function, respectively.
+In contrast to many shared-frailty models that require a parametric
+assumption, following the idea of \citet{wang2001analyzing}, the
+\texttt{reReg()} function implements semiparametric estimation
+procedures that do not require the knowledge about the frailty
+distribution. As a result, the dependence between recurrent events and
+failure event is left unspecified and the proposed implementations
+accommodate informative censoring.
 
 Model \eqref{general} includes several popular semiparametric models as
 special cases, which can be specified via the \texttt{method} argument
@@ -51,13 +45,13 @@ the joint Cox model with 200 (default) resampling replicates:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{system.time}\NormalTok{(fit <-}\StringTok{ }\KeywordTok{reReg}\NormalTok{(fn, df0, }\DataTypeTok{method =} \StringTok{"cox|cox"}\NormalTok{))}
+\KeywordTok{system.time}\NormalTok{(fit \textless{}{-}}\StringTok{ }\KeywordTok{reReg}\NormalTok{(fn, df0, }\DataTypeTok{method =} \StringTok{"cox|cox"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
    user  system elapsed 
-  1.884   0.016   1.903 
+  8.516   0.080   2.838 
 \end{verbatim}
 
 The \texttt{summary()} method prints the results of the model fits:
@@ -74,11 +68,11 @@ reReg(formula = fn, data = df0, method = "cox|cox")
 
 Recurrent event process:
              Estimate StdErr z.value p.value
-chemoTreated   -0.189  0.244  -0.778   0.437
+chemoTreated   -0.189  0.235  -0.806    0.42
 
 Terminal event:
-             Estimate StdErr z.value p.value  
-chemoTreated    0.519  0.286   1.815    0.07 .
+             Estimate StdErr z.value p.value
+chemoTreated    0.519  0.337   1.543   0.123
 \end{verbatim}
 
 After a model is fitted, the baseline rate function and hazard function

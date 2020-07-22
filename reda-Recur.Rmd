@@ -21,7 +21,7 @@ data(readmission, package = "frailtypack")
 with(readmission, Recur(t.stop, id, event, death))
 ```
 
-The `Recur()` internally checks whether the specified data fits into the
+The `Recur()` internally checks if the specified data fits into the
 recurrent event data framework and detected a possible issue on the data
 structure.
 <!-- Without these subjects, the `Recur` object is presented by intervals. -->

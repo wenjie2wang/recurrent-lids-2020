@@ -5,18 +5,18 @@ Nelson-Aalen estimator \citep{nelson2003siam} for the MCF takes the form
 \[\widehat{M}(t) = \int_0^t \frac{dN(s)}{\delta(s)},\] where
 \(dN(s)=\sum_{i=1}^k dN_i(s)\),
 \(\delta(s) = \sum_{i=1}^k \delta_i(s)\), \(dN_i(s)\) and
-\(\delta_i(s)\) is, respectively, the jump size and at-risk indicator of
-process \(i\) at time \(s\). The MCF can be visualized by plotting the
-\texttt{Recur} object with argument \texttt{mcf\ =\ TRUE} when the
+\(\delta_i(s)\) are, respectively, the jump size and at-risk indicator
+of process \(i\) at time \(s\). The MCF can be visualized by plotting
+the \texttt{Recur} object with argument \texttt{mcf\ =\ TRUE} when the
 \pkg{reReg} package is active, e.g., \texttt{plot(obj,\ mcf\ =\ TRUE)}.
 Alternatively, the \texttt{mcf()} function from the \pkg{reda} package
 provides a more sophisticated approach to plot MCFs and make inference.
 The following example uses the \texttt{mcf()} function to visualize MCF
-estimates stratified by whether the patients received chemotherapy.
+estimates stratified by if the patients received chemotherapy.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{re\_mcf \textless{}{-}}\StringTok{ }\KeywordTok{mcf}\NormalTok{(fn, }\DataTypeTok{data =}\NormalTok{ df0)}
+\NormalTok{re\_mcf \textless{}{-}}\StringTok{ }\NormalTok{reda}\OperatorTok{::}\KeywordTok{mcf}\NormalTok{(fn, }\DataTypeTok{data =}\NormalTok{ df0)}
 \KeywordTok{plot}\NormalTok{(re\_mcf, }\DataTypeTok{conf.int =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{) }\OperatorTok{+}
 \StringTok{    }\NormalTok{ggplot2}\OperatorTok{::}\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"bottom"}\NormalTok{) }\CommentTok{\# Fig. 3}
 \end{Highlighting}
@@ -25,14 +25,14 @@ estimates stratified by whether the patients received chemotherapy.
 \vspace*{-.3cm}
 \begin{figure}[H]
     \centering
-    \begin{minipage}{0.245\textwidth}
+    \begin{minipage}{0.24\textwidth}
         \centering
-        \includegraphics[scale = .60]{images/plot-sampleMcf-1}
+        \includegraphics[scale = .60]{recur-figs/plot-sampleMcf-1}
         \caption{Stratified by \texttt{chemo}}
     \end{minipage}\hfill
-    \begin{minipage}{0.245\textwidth}
+    \begin{minipage}{0.24\textwidth}
         \centering
-        \includegraphics[scale = .45]{images/mcfdiffplot-1}
+        \includegraphics[scale = .45]{recur-figs/mcfdiffplot-1}
         \caption{MCF difference}
     \end{minipage}
 \end{figure}
@@ -46,7 +46,7 @@ MCF estimates are statistically different at a significance level of
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{mcfDiff.test}\NormalTok{(re\_mcf)}
+\NormalTok{reda}\OperatorTok{::}\KeywordTok{mcfDiff.test}\NormalTok{(re\_mcf)}
 \end{Highlighting}
 \end{Shaded}
 

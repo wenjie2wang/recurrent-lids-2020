@@ -17,12 +17,11 @@ fits semiparametric regression models to recurrent event data.-->
 The `reReg()` function from the \pkg{reReg} package provides methods to fit
 semiparametric regression models to recurrent event data.
 A general joint model for the rate function of the recurrent event process and
-the hazard function of the failure time can be formulated as follow: \vspace*{-.5cm}
+the hazard function of the failure time can be formulated as follow:
 \begin{equation}
 \lambda(t) = Z \lambda_0(te^{X^\top\alpha})e^{X^\top\beta};
-h(t) = Z h_0(te^{X^\top\eta})e^{X^\top\theta},
-\label{general}
-\end{equation}\vspace*{-.1cm}
+h(t) = Z h_0(te^{X^\top\eta})e^{X^\top\theta},\label{general}
+\end{equation}
 where $Z$ is a latent shared frailty variable to account for association between the two types of
 outcomes, $\lambda_0(\cdot)$ is the baseline rate function,
 $h_0(\cdot)$ is the baseline hazard function, and the regression coefficients

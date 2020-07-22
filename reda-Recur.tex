@@ -20,17 +20,17 @@ Error: Subjects having multiple terminal events:
 60, 109, 280.
 \end{verbatim}
 
-The \texttt{Recur()} internally checks whether the specified data fits
-into the recurrent event data framework and detected a possible issue on
-the data structure. The \texttt{show()} method for \texttt{Recur}
-objects presents recurrent events in intervals, where events happened at
-end of the recurrent episodes with censoring due to (or not) terminal
-indicated by a trailing \texttt{+} (or \texttt{*}). The following prints
-the \texttt{Recur} object for the first five subjects.
+The \texttt{Recur()} internally checks if the specified data fits into
+the recurrent event data framework and detected a possible issue on the
+data structure. The \texttt{show()} method for \texttt{Recur} objects
+presents recurrent events in intervals, where events happened at end of
+the recurrent episodes with censoring due to (or not) terminal indicated
+by a trailing \texttt{+} (or \texttt{*}). The following prints the
+\texttt{Recur} object for the first five subjects.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{with}\NormalTok{(readmission[}\DecValTok{1}\NormalTok{:}\DecValTok{14}\NormalTok{,], }\KeywordTok{Recur}\NormalTok{(t.stop, id, event, death))}
+\KeywordTok{with}\NormalTok{(readmission[}\DecValTok{1}\OperatorTok{:}\DecValTok{14}\NormalTok{,], }\KeywordTok{Recur}\NormalTok{(t.stop, id, event, death))}
 \end{Highlighting}
 \end{Shaded}
 
