@@ -189,13 +189,13 @@ recurrent event data.
 
 Consider a random sample of $n$ subjects and let
 $N_i(t)$ be the number of events the $i$th subject experienced over the interval $[0, t]$. 
-Let $D$ be the failure time of interest that could either be a terminal event (e.g., death)
+Let $D_i$ be the failure time of interest that could either be a terminal event (e.g., death)
 or a non-terminal event (e.g., treatment failure).
-Let $C$ be the potential censoring time for reasons other than the failure event
+Let $C_i$ be the potential censoring time for reasons other than the failure event
 (e.g., study dropouts).
 The observed data are independent and identically distributed copies
 $\{N_i(t), Y_i, X_i; t\le Y_i, i = 1, \ldots, n\}$,
-where $Y_i = \min(D, C)$, $\Delta_i = I(D\le C)$,
+where $Y_i = \min(D_i, C_i)$, $\Delta_i = I(D_i\le C_i)$,
 $I(\cdot)$ is the indicator function,
 $X_i$ is a covariate vector, 
 and $N_i(\cdot)$ is observed up $Y_i$.

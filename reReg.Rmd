@@ -55,15 +55,15 @@ For inference, the asymptotic variance is estimated from an efficient resampling
 estimator motivated by \citet{zeng2008efficient}.
 The resampling approach is faster than the conventional bootstrap as it only requires
 evaluating perturbed estimating equations rather than solving them.
-The following code fits the joint Cox model with 200 (default) resampling replicates:
+The following code fits the joint Cox model with 200 (default) resampling replicates.
 <!--and the generalized scale-change model, respectively. -->
 ```{R, cache = TRUE}
-system.time(fit <- reReg(fn, df0, method = "cox|cox"))
+fit <- reReg(fn, df0, method = "cox|cox"); summary(fit)
 ```
-The `summary()` method prints the results of the model fits:
-```{R}
-summary(fit)
- ```
+<!--The `summary()` method prints the results of the model fits: -->
+The model shows that patients treated with chemotherapy are hospitalized less often
+(17\% lower) and have a higher risk of death (68\% more) than patients not treated with chemotherapy
+though not significant at the 0.05 level.
 After a model is fitted, the baseline rate function and hazard function can be visualized
 by plotting the `reReg()` object. 
 <!--Methods proposed by authors \citet{lin2000semiparametric}, \citet{ghosh2002marginal}, and

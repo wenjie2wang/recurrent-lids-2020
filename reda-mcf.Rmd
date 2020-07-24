@@ -37,7 +37,7 @@ Terminal events are ignored here for ease of illustration. -->
 ```{r plot-sampleMcf-code, eval = FALSE}
 re_mcf <- reda::mcf(fn, data = df0)
 plot(re_mcf, conf.int = TRUE, lty = 1:2) +
-    ggplot2::theme(legend.position = "bottom") # Fig. 3
+    ggplot2::theme(legend.position = "bottom") # Figure 3
 ```
 
 ```{r plot-sampleMcf, echo = FALSE, fig.path = 'recur-figs/', fig.show = 'hide', fig.width = 3, fig.height = 2.55}

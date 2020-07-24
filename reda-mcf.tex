@@ -16,14 +16,13 @@ estimates stratified by if the patients received chemotherapy.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{re\_mcf \textless{}{-}}\StringTok{ }\NormalTok{reda}\OperatorTok{::}\KeywordTok{mcf}\NormalTok{(fn, }\DataTypeTok{data =}\NormalTok{ df0)}
-\KeywordTok{plot}\NormalTok{(re\_mcf, }\DataTypeTok{conf.int =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\NormalTok{ggplot2}\OperatorTok{::}\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"bottom"}\NormalTok{) }\CommentTok{\# Fig. 3}
+\NormalTok{re_mcf <-}\StringTok{ }\NormalTok{reda::}\KeywordTok{mcf}\NormalTok{(fn, }\DataTypeTok{data =} \NormalTok{df0)}
+\KeywordTok{plot}\NormalTok{(re_mcf, }\DataTypeTok{conf.int =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{1}\NormalTok{:}\DecValTok{2}\NormalTok{) +}
+\StringTok{    }\NormalTok{ggplot2::}\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"bottom"}\NormalTok{) }\CommentTok{# Figure 3}
 \end{Highlighting}
 \end{Shaded}
 
-\vspace*{-.3cm}
-\begin{figure}[H]
+\vspace*{-.3cm}\begin{figure}[H]
     \centering
     \begin{minipage}{0.24\textwidth}
         \centering
@@ -46,7 +45,7 @@ MCF estimates are statistically different at a significance level of
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{reda}\OperatorTok{::}\KeywordTok{mcfDiff.test}\NormalTok{(re\_mcf)}
+\NormalTok{reda::}\KeywordTok{mcfDiff.test}\NormalTok{(re_mcf)}
 \end{Highlighting}
 \end{Shaded}
 

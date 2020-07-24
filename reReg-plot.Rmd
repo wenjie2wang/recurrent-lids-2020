@@ -18,13 +18,13 @@ stratifying  by if the patients received chemotherapy.
 ```{R, ep, echo = FALSE, fig.path = 'recur-figs/', fig.show = 'hide', fig.width = 7, fig.height = 6.5}
 df0 <- subset(readmission, !(id %in% c(60, 109, 280)))
 obj <- with(df0, Recur(t.stop, id, event, death))
-plot(obj, legend = "top", main = "", cex = 3) +
+plot(obj, legend = "top", main = "", cex = 1.5) +
     theme(axis.text = element_text(size = 24),
           axis.title = element_text(size = 26),
           legend.text = element_text(size = 26)) +
     guides(shape = guide_legend(override.aes = list(size = 7)))
 fn <- Recur(t.stop, id, event, death) ~ chemo
-plotEvents(fn, data = df0, legend = "top", main = "", cex = 3) +
+plotEvents(fn, data = df0, legend = "top", main = "", cex = 1.5) +
     theme(axis.text = element_text(size = 24),
           axis.title = element_text(size = 26),
           strip.text = element_text(size = 24),
@@ -34,9 +34,9 @@ plotEvents(fn, data = df0, legend = "top", main = "", cex = 3) +
 ```{R, eval = FALSE}
 df0 <- subset(readmission, !(id %in% c(60, 109, 280)))
 obj <- with(df0, Recur(t.stop, id, event, death))
-plot(obj, legend = "top") # Fig. 1
+plot(obj, legend = "top") # Figure 1
 fn <- Recur(t.stop, id, event, death) ~ chemo
-plotEvents(fn, data = df0, legend = "top") # Fig. 2
+plotEvents(fn, data = df0, legend = "top") # Figure 2
 ```
 \vspace*{-.3cm}
 \begin{figure}[H]
