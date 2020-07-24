@@ -71,7 +71,7 @@ via `mcfDiff.test()`, which implements the two-sample pseudo-score tests of
 The following results indicate the MCF estimates are statistically different at
 a significance level of 0.05.
 The MCF difference can be plotted with directly by `plot(mcfDiff(re_mcf))`,
-as shown in Fig. 4.
+as shown in Figure 4.
 ```{r mcfdiff, echo = TRUE}
 reda::mcfDiff.test(re_mcf)
 ```
